@@ -12,18 +12,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                const theme = localStorage.getItem('theme') || 'dark';
-                document.documentElement.classList.add(theme);
-              })();
-            `,
-          }}
-        />
-      </head>
       <body className={`${vazir.className} bg-zinc-50 dark:bg-zinc-950`}>
         <Providers>
           <main className="max-w-sm min-h-screen overflow-y-hidden mx-auto relative">
