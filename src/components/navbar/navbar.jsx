@@ -21,8 +21,8 @@ const Navbar = () => {
   const active = usePathname();
 
   return (
-    <nav className="fixed bottom-2 w-sm max-w-sm h-10 rounded-2xl">
-      <div className="w-full h-full grid grid-cols-5 gap-x-2 items-center rounded-2xl border dark:text-zinc-200 text-zinc-800 border-zinc-400 bg-zinc-300 dark:border-zinc-800 dark:bg-zinc-900">
+    <nav className="fixed bottom-2 w-sm max-w-sm flex justify-center h-10 rounded-2xl">
+      <div className="w-[80%] h-full grid grid-cols-5 gap-x-2 items-center rounded-2xl border dark:text-zinc-200 text-zinc-800 border-zinc-400 bg-zinc-300 dark:border-zinc-800 dark:bg-zinc-900">
         <div className="nav">
           <Link href={"/"} className="nav-item">
             {active === "/" ? (
@@ -31,7 +31,7 @@ const Navbar = () => {
               <PiHouseLight size={25} />
             )}
           </Link>
-          <span className="nav-title text-sm rounded-2xl border border-zinc-400 bg-zinc-300 dark:border-zinc-700 dark:bg-zinc-800">
+          <span className="nav-title  bg-zinc-300 dark:bg-zinc-800">
             Home
           </span>
         </div>
@@ -43,7 +43,7 @@ const Navbar = () => {
               <PiClipboardTextLight size={25} />
             )}
           </Link>
-          <span className="nav-title text-sm rounded-2xl border border-zinc-400 bg-zinc-300 dark:border-zinc-700 dark:bg-zinc-800">
+          <span className="nav-title  bg-zinc-300 dark:bg-zinc-800">
             Tasks
           </span>
         </div>
@@ -55,7 +55,7 @@ const Navbar = () => {
               <PiPenNibLight size={25} />
             )}
           </Link>
-          <span className="nav-title text-sm rounded-2xl border border-zinc-400 bg-zinc-300 dark:border-zinc-700 dark:bg-zinc-800">
+          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">
             Add
           </span>
         </div>
@@ -67,7 +67,7 @@ const Navbar = () => {
           >
             <PiGithubLogoLight size={25} />
           </a>
-          <span className="nav-title text-sm rounded-2xl border border-zinc-400 bg-zinc-300 dark:border-zinc-700 dark:bg-zinc-800">
+          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">
             Github
           </span>
         </div>
@@ -78,7 +78,7 @@ const Navbar = () => {
           >
             <PiPaintBrushBroadLight size={25} />
           </button>
-          <span className="nav-title text-sm rounded-2xl border border-zinc-400 bg-zinc-300 dark:border-zinc-700 dark:bg-zinc-800">
+          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">
             Theme
           </span>
         </div>
