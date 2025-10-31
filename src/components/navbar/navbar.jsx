@@ -20,7 +20,7 @@ const Navbar = () => {
   const githubLink = "https://github.com/awmiroosen";
 
   return (
-    <nav className=" max-w-sm w-sm h-16 absolute bottom-0 flex justify-center items-center z-50">
+    <nav className=" max-w-sm w-sm h-16 fixed bottom-0 flex justify-center items-center z-50">
       <div className="w-80 h-12 flex items-center transition-all relative rounded-3xl backdrop-blur-md border border-zinc-700">
         <div className="group w-1/5 h-full flex justify-center items-center relative rounded-l-3xl bg-zinc-100/60 dark:bg-zinc-900/60">
           <Link
