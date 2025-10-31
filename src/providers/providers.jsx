@@ -1,10 +1,9 @@
-import { ThemeProvider } from "next-themes";
+import { ThemeProvider } from "./context/ThemeProvider";
+
 const Providers = ({ children }) => {
   return (
     <>
-      <ThemeProvider attribute={"class"} disableTransitionOnChange enableSystem>
-        {children}
-      </ThemeProvider>
+      <ThemeProvider>{children}</ThemeProvider>
     </>
   );
 };
