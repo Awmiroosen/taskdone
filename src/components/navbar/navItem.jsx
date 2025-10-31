@@ -4,7 +4,7 @@ const NavItem = ({ icon, link, active }) => {
     <Link
       href={link}
       className={`py-1 px-2 rounded-2xl ${
-        link === active ? "bg-zinc-700" : null
+        link === active ? "dark:bg-zinc-700 bg-zinc-400" : null
       }`}
     >
       <div className="w-full h-full flex justify-center items-center">
