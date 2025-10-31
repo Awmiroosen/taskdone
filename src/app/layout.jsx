@@ -1,6 +1,7 @@
 import Providers from "@/providers/providers";
 import { Vazirmatn } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar/navbar";
 
 const vazir = Vazirmatn({ subsets: ["arabic", "latin"] });
 export const metadata = {
@@ -11,8 +12,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={vazir.className}>
-        <Providers>{children}</Providers>
+      <body className={`${vazir.className} bg-neutral-100 dark:bg-neutral-900`}>
+        <Providers>
+          <main className="max-w-sm min-h-screen overflow-y-hidden mx-auto relative">
+            {children}
+            <Navbar />
+          </main>
+        </Providers>
       </body>
     </html>
   );
