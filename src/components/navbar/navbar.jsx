@@ -20,7 +20,7 @@ const Navbar = () => {
   const active = usePathname();
 
   return (
-    <nav className="fixed bottom-2 w-sm max-w-sm flex justify-center h-10 rounded-2xl">
+    <nav className="fixed bottom-0 w-sm max-w-sm flex justify-center h-10 rounded-2xl">
       <div className="w-[100%] h-full grid grid-cols-5 gap-x-2 items-center rounded-t-2xl border dark:text-zinc-200 text-zinc-800 border-zinc-400 bg-zinc-300 dark:border-zinc-800 dark:bg-zinc-900">
         <div className="nav">
           <Link href={"/"} className="nav-item">
