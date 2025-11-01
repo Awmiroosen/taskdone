@@ -43,13 +43,13 @@ const Navbar = () => {
           </Link>
           <span className="nav-title  bg-zinc-300 dark:bg-zinc-800">Tasks</span>
         </div>
-        <div className="nav bg-zinc-800 text-zinc-200 dark:bg-zinc-200 dark:text-zinc-800 rounded-2xl">
+        <div
+          className={`nav bg-zinc-700 text-zinc-200 dark:bg-neutral-400 dark:text-zinc-800 rounded-2xl ${
+            active === "/add" ? "bg-zinc-800 dark:bg-zinc-200" : null
+          }`}
+        >
           <Link href={"/add"} className="nav-item">
-            {active === "/add" ? (
-              <PiPlusBold size={25} />
-            ) : (
-              <PiPlusLight size={25} />
-            )}
+            <PiPlusBold size={25} />
           </Link>
           <span className="nav-title bg-zinc-800 dark:bg-zinc-200 text-zinc-200 dark:text-zinc-800">
             Add
