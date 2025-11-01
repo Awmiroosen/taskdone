@@ -1,10 +1,11 @@
+import Container from "@/components/ui/container";
 const add = () => {
   return (
-    <>
+    <Container>
       <div>
-        <h1 className="text-3xl">Add</h1>
+        <h1 className="text-3xl font-black">Add</h1>
       </div>
-    </>
+    </Container>
   );
 };
 

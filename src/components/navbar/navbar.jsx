@@ -10,8 +10,8 @@ import {
   PiHouseFill,
   PiClipboardTextLight,
   PiClipboardTextFill,
-  PiPenNibLight,
-  PiPenNibFill,
+  PiPlusLight,
+  PiPlusBold,
   PiGithubLogoLight,
   PiPaintBrushBroadLight,
 } from "react-icons/pi";
@@ -31,9 +31,7 @@ const Navbar = () => {
               <PiHouseLight size={25} />
             )}
           </Link>
-          <span className="nav-title  bg-zinc-300 dark:bg-zinc-800">
-            Home
-          </span>
+          <span className="nav-title  bg-zinc-300 dark:bg-zinc-800">Home</span>
         </div>
         <div className="nav">
           <Link href={"/tasks"} className="nav-item">
@@ -43,19 +41,17 @@ const Navbar = () => {
               <PiClipboardTextLight size={25} />
             )}
           </Link>
-          <span className="nav-title  bg-zinc-300 dark:bg-zinc-800">
-            Tasks
-          </span>
+          <span className="nav-title  bg-zinc-300 dark:bg-zinc-800">Tasks</span>
         </div>
-        <div className="nav">
+        <div className="nav bg-zinc-800 text-zinc-200 dark:bg-zinc-200 dark:text-zinc-800 rounded-2xl">
           <Link href={"/add"} className="nav-item">
             {active === "/add" ? (
-              <PiPenNibFill size={25} />
+              <PiPlusBold size={25} />
             ) : (
-              <PiPenNibLight size={25} />
+              <PiPlusLight size={25} />
             )}
           </Link>
-          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">
+          <span className="nav-title bg-zinc-800 dark:bg-zinc-200 text-zinc-200 dark:text-zinc-800">
             Add
           </span>
         </div>
@@ -67,9 +63,7 @@ const Navbar = () => {
           >
             <PiGithubLogoLight size={25} />
           </a>
-          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">
-            Github
-          </span>
+          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">Github</span>
         </div>
         <div className="nav">
           <button
@@ -78,9 +72,7 @@ const Navbar = () => {
           >
             <PiPaintBrushBroadLight size={25} />
           </button>
-          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">
-            Theme
-          </span>
+          <span className="nav-title bg-zinc-300 dark:bg-zinc-800">Theme</span>
         </div>
       </div>
     </nav>
