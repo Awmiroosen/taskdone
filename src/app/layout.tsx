@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import AppProviders from "@/components/providers/AppProviders";
+import Navbar from "@/components/Navbar";
 
 const vazir = Vazirmatn({ subsets: ["arabic", "latin"] });
 
@@ -20,9 +21,10 @@ const RootLayout = ({
       <body
         className={`${vazir.className} bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200`}
       >
-        <AppProviders>
+        <ThemeProvider attribute="class" enableSystem>
           <main className="max-w-3xl max-sm:max-w-sm mx-auto">{children}</main>
-        </AppProviders>
+          <Navbar />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -2,12 +2,17 @@ interface Todo {
   id: string;
   title: string;
   done: boolean;
+  listTitle: string;
+  startDate?: number;
+  lastUpdate?: number;
 }
 
 interface List {
   id: string;
   title: string;
   done: boolean;
+  startDate?: number;
+  lastUpdate?: number;
   todos: Todo[];
 }
 

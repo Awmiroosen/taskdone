@@ -1,7 +1,12 @@
+// import Card from "@/components/ui/Card";
+
 const Home = () => {
   return (
     <div>
       <h1 className="text-2xl font-bold">Home</h1>
+      <div className="w-full grid grid-cols-1 gap-8">
+        {/* <Card title="hello world" /> */}
+      </div>
     </div>
   );
 };
