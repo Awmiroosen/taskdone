@@ -15,7 +15,13 @@ export const useTodo = create<TodoStore>()(
         set((state) => ({
           lists: [
             ...state.lists,
-            { title, id: uuid(), done: false, todos: [] },
+            {
+              title,
+              id: uuid(),
+              done: false,
+              todos: [],
+              editedAt: new Date().toISOString(),
+            },
           ],
         })),
 
@@ -28,6 +34,7 @@ export const useTodo = create<TodoStore>()(
                   done: !list.done,
                   todos: list.todos.map((todo) => ({
                     ...todo,
+                    editedAt: new Date().toISOString(),
                     done: !todo.done,
                   })),
                 }
@@ -48,7 +55,13 @@ export const useTodo = create<TodoStore>()(
                   ...list,
                   todos: [
                     ...list.todos,
-                    { title, listTitle: list.title, id: uuid(), done: false },
+                    {
+                      title,
+                      listTitle: list.title,
+                      id: uuid(),
+                      done: false,
+                      editedAt: new Date().toISOString(),
+                    },
                   ],
                 }
               : list
@@ -62,7 +75,13 @@ export const useTodo = create<TodoStore>()(
               ? {
                   ...list,
                   todos: list.todos.map((item) =>
-                    item.id === todoId ? { ...item, done: !item.done } : item
+                    item.id === todoId
+                      ? {
+                          ...item,
+                          editedAt: new Date().toISOString(),
+                          done: !item.done,
+                        }
+                      : item
                   ),
                 }
               : list

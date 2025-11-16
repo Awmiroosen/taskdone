@@ -3,12 +3,14 @@ interface Todo {
   title: string;
   done: boolean;
   listTitle: string;
+  editedAt?: string;
 }
 
 interface List {
   id: string;
   title: string;
   done: boolean;
+  editedAt?: string;
   todos: Todo[];
 }
 
