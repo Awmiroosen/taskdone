@@ -3,25 +3,24 @@ interface Todo {
   title: string;
   done: boolean;
   listTitle: string;
-  startDate?: number;
-  lastUpdate?: number;
 }
 
 interface List {
   id: string;
   title: string;
   done: boolean;
-  startDate?: number;
-  lastUpdate?: number;
   todos: Todo[];
 }
 
 export interface TodoStore {
   lists: List[];
+  pinLists: List[];
   addTodo?: (listId: string, title: string) => void;
   doneTodo: (listId: string, todoId: string) => void;
   deleteTodo: (listId: string, todoId: string) => void;
   addList: (title: string) => void;
   doneList: (listId: string) => void;
   deleteList: (listId: string) => void;
+  addPinList: (listId: string) => void;
+  deletePinList: (listId: string) => void;
 }

@@ -7,16 +7,17 @@
 }
 
 .navLink {
-  padding: 0.3rem;
+  padding: 0.6rem;
   border-radius: 100%;
 }
 
 .itemLabel {
   position: absolute;
-  bottom: 3rem;
+  bottom: 3.4rem;
   font-size: 14px;
-  padding: 4px 10px;
+  padding: 8px 12px;
   visibility: hidden;
+  user-select: none;
 }
 
 .navLink:hover ~ .itemLabel {

@@ -3,9 +3,5 @@ export interface TaskCard {
   listId?: string;
   title: string;
   done: boolean;
-  startDate?: string;
-  lastUpdate?: string;
-  listTitle: string;
-  tasks?: number;
   type: "list" | "todo";
 }
