@@ -7,12 +7,25 @@ import { useTodo } from "@/store/todoStore";
 import TaskCard from "@/components/ui/TaskCard";
 import NotFound from "@/app/not-found";
 import Link from "next/link";
-import { LuChevronLeft } from "react-icons/lu";
+import { LuChevronLeft, LuPlus } from "react-icons/lu";
+import { useState } from "react";
 
 const ListPage = () => {
   const slug = usePathname();
-  const { lists } = useTodo();
+  const { lists, addTodo } = useTodo();
   const activeList = lists.find((list) => "/tasks/" + list.id === slug);
+
+  console.log(activeList?.todos);
+
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleAdd = () => {
+    const iTitle = inputValue.trim();
+    if (iTitle && activeList) {
+      addTodo?.(activeList.id, iTitle);
+    }
+    setInputValue("");
+  };
 
   if (!activeList) {
     return <NotFound />;
@@ -25,11 +38,27 @@ const ListPage = () => {
           href="/tasks"
           className="bg-neutral-900 text-neutral-200 dark:bg-neutral-200 dark:text-neutral-900 px-2 py-1 rounded-2xl flex items-center"
         >
-          <LuChevronLeft />
+          <LuChevronLeft className="mb-1" />
           back
         </Link>
       </div>
-      <div className="my-4 grid grid-cols-2 gap-8">
+
+      <div className="w-full flex my-8 px-1">
+        <input
+          type="text"
+          placeholder="type here"
+          className="w-10/12 bg-neutral-100 dark:bg-neutral-900 focus:outline-0 border-2 rounded-l-2xl p-2"
+          onChange={(e) => setInputValue(e.target.value)}
+          value={inputValue}
+        />
+        <button
+          onClick={() => handleAdd()}
+          className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 cursor-pointer flex justify-center items-center rounded-r-2xl"
+        >
+          <LuPlus size={25} />
+        </button>
+      </div>
+      <div className="my-4 grid grid-cols-1 gap-8">
         {activeList?.todos.map((todo) => (
           <TaskCard
             key={todo.id}

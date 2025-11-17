@@ -1,0 +1,5 @@
+.card:hover .cardBtn {
+  transform: scaleX(2rem);
+  position: absolute;
+  background: red;
+}
