@@ -1,9 +1,10 @@
 "use client";
 
 import ListCard from "@/components/ui/ListCard";
+
 import { useTodo } from "@/store/todoStore";
 import { useState } from "react";
-import { LuPlus, LuFileWarning } from "react-icons/lu";
+import { LuPlus, LuFileWarning, LuFolder } from "react-icons/lu";
 
 const Tasks = () => {
   const { lists, addList } = useTodo();
@@ -37,7 +38,14 @@ const Tasks = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-col gap-y-6">
+      <div className="w-full my-8 flex justify-center items-center select-none">
+        <div className="flex bg-neutral-900 text-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 px-4 py-1 rounded-2xl">
+          <LuFolder size={22} />
+          <h3 className="mx-1 text-xl font-semibold">Lists</h3>
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-y-6 mx-6">
         {lists.length === 0 ? (
           <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
             <LuFileWarning className="mx-2" size={25} />

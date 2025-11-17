@@ -7,15 +7,18 @@ import { useTodo } from "@/store/todoStore";
 import TaskCard from "@/components/ui/TaskCard";
 import NotFound from "@/app/not-found";
 import Link from "next/link";
-import { LuChevronLeft, LuPlus } from "react-icons/lu";
+import {
+  LuChevronLeft,
+  LuPlus,
+  LuCalendarFold,
+  LuCalendarCheck2,
+} from "react-icons/lu";
 import { useState } from "react";
 
 const ListPage = () => {
   const slug = usePathname();
   const { lists, addTodo } = useTodo();
   const activeList = lists.find((list) => "/tasks/" + list.id === slug);
-
-  console.log(activeList?.todos);
 
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -31,8 +34,9 @@ const ListPage = () => {
     return <NotFound />;
   }
 
+  console.log(activeList.todos.filter((item) => item.done).length);
   return (
-    <section className="py-4">
+    <section className="py-4 my-8">
       <div className="text-sm flex justify-start items-center">
         <Link
           href="/tasks"
@@ -58,7 +62,18 @@ const ListPage = () => {
           <LuPlus size={25} />
         </button>
       </div>
-      <div className="my-4 grid grid-cols-1 gap-8">
+      <div className="w-full my-8 flex justify-center items-center select-none">
+        <div className="flex bg-neutral-900 text-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 px-4 py-1 rounded-2xl">
+          {activeList.todos.filter((item) => item.done).length !==
+          activeList.todos.length ? (
+            <LuCalendarFold size={22} />
+          ) : (
+            <LuCalendarCheck2 size={22} />
+          )}
+          <h3 className="mx-1 text-xl font-semibold">Tasks</h3>
+        </div>
+      </div>
+      <div className="my-4 mx-4 grid grid-cols-1 gap-8 ">
         {activeList?.todos.map((todo) => (
           <TaskCard
             key={todo.id}

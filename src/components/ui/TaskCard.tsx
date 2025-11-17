@@ -45,19 +45,19 @@ const TaskCard = ({ title, listTitle, done = false, id, listId }: Todo) => {
         </div>
       </div>
       <div>
-        <div className="w-1/6 h-full ml-1 border-neutral-300 dark:border-neutral-800 flex flex-col justify-between">
-          <div className="mx-3">
+        <div className="h-full ml-1 border-neutral-300 dark:border-neutral-800 flex flex-col justify-between items-end">
+          <div className="pr-3">
             <input
               type="checkbox"
               checked={done}
               onChange={() => doneTodo(listId, id)}
               className="cursor-pointer"
-              style={{ transform: "scale(1.2)" }}
+              style={{ transform: "scale(1.4)" }}
             />
           </div>
-          <div className="mx-3">
+          <div className="px-1">
             <button
-              className="hover:text-red-600 cursor-pointer"
+              className="bg-neutral-300 dark:bg-neutral-700 p-1.5 rounded-2xl hover:bg-red-600/60 transition-colors duration-100 cursor-pointer"
               onClick={() => deleteTodo(listId, id)}
             >
               <LuTrash />
