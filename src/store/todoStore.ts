@@ -60,6 +60,7 @@ export const useTodo = create<TodoStore>()(
                       listTitle: list.title,
                       id: uuid(),
                       done: false,
+                      listId : listId,
                       editedAt: new Date().toISOString(),
                     },
                   ],

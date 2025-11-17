@@ -1,5 +1,6 @@
-interface Todo {
+export interface Todo {
   id: string;
+  listId: string;
   title: string;
   done: boolean;
   listTitle: string;

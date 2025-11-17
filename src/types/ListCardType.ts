@@ -4,4 +4,5 @@ export interface ListCardType {
   done?: boolean;
   editedAt?: string;
   listLength: number;
+  link: string;
 }

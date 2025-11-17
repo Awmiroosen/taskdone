@@ -8,9 +8,11 @@ import {
   LuClock,
   LuClipboardList,
   LuTrash,
+  LuChevronRight,
 } from "react-icons/lu";
 
 import { TiStarOutline, TiStar } from "react-icons/ti";
+import Link from "next/link";
 
 const ListCard = ({
   id,
@@ -18,6 +20,7 @@ const ListCard = ({
   done = false,
   editedAt,
   listLength,
+  link = "",
 }: ListCardType) => {
   const { doneList, deleteList, addPinList, deletePinList, pinLists } =
     useTodo();
@@ -80,23 +83,36 @@ const ListCard = ({
           </span>
         </div>
       </div>
-      <div className="mt-2 pt-4 border-t border-neutral-300 dark:border-neutral-800 flex justify-end">
-        <div className="mx-3">
-          <input
-            type="checkbox"
-            checked={done}
-            onChange={() => doneList(id)}
-            className="cursor-pointer"
-            style={{ transform: "scale(1.2)" }}
-          />
+      <div className="mt-2 pt-4 border-t border-neutral-300 dark:border-neutral-800 flex">
+        <div className="w-1/2 flex">
+          <div className="mx-3">
+            <input
+              type="checkbox"
+              checked={done}
+              onChange={() => doneList(id)}
+              className="cursor-pointer"
+              style={{ transform: "scale(1.2)" }}
+            />
+          </div>
+          <div className="mx-3">
+            <button
+              className="hover:text-red-600 cursor-pointer"
+              onClick={() => deleteList(id)}
+            >
+              <LuTrash />
+            </button>
+          </div>
         </div>
-        <div className="mx-3">
-          <button
-            className="hover:text-red-600 cursor-pointer"
-            onClick={() => deleteList(id)}
+        <div className="w-1/2 flex justify-end text-sm">
+          <Link
+            href={link}
+            className="bg-neutral-900 text-neutral-200 dark:bg-neutral-200 dark:text-neutral-900 px-3 rounded-2xl flex items-center"
           >
-            <LuTrash />
-          </button>
+            Tasks
+            <button>
+              <LuChevronRight size={15} />
+            </button>
+          </Link>
         </div>
       </div>
     </div>
