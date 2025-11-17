@@ -51,7 +51,7 @@ const ListPage = () => {
         <input
           type="text"
           placeholder="Add your tasks"
-          className="w-10/12 bg-neutral-100 dark:bg-neutral-900 focus:outline-0 border rounded-l-xl p-2"
+          className="w-10/12 bg-neutral-300 dark:bg-neutral-800 focus:outline-0 border-2 rounded-l-xl p-2"
           onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
         />

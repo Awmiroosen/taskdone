@@ -71,7 +71,7 @@ const ListCard = ({
           </button>
         </div>
       </div>
-      <div className="w-full my-1">
+      <div className="w-full my-4">
         <h5 className="font-semibold text-xl py-1 ">{title}</h5>
       </div>
       <div className="w-full flex my-1">

@@ -36,7 +36,7 @@ const TaskCard = ({ title, listTitle, done = false, id, listId }: Todo) => {
             </span>
           )}
         </div>
-        <div className="my-2">
+        <div className="my-4">
           <h5 className="text-xl font-semibold">{title}</h5>
         </div>
         <div className="flex text-[0.7rem] font-light text-neutral-500 dark:text-neutral-400">

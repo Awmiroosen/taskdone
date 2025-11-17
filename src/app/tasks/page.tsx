@@ -4,12 +4,7 @@ import ListCard from "@/components/ui/ListCard";
 
 import { useTodo } from "@/store/todoStore";
 import { useState } from "react";
-import {
-  LuPlus,
-  LuFileWarning,
-  LuFolder,
-  LuCalendarCheck2,
-} from "react-icons/lu";
+import { LuPlus, LuFilePen, LuFolder, LuCalendarCheck2 } from "react-icons/lu";
 
 const Tasks = () => {
   const { lists, addList } = useTodo();
@@ -29,13 +24,13 @@ const Tasks = () => {
     lists.filter((item) => item.done).length;
 
   return (
-    <section className="p-2">
+    <section className="p-2 mb-18">
       <div>
         <div className="w-full flex my-8 px-1">
           <input
             type="text"
             placeholder="Add new List"
-            className="w-10/12 bg-neutral-100 dark:bg-neutral-900 focus:outline-0 border rounded-l-xl p-2"
+            className="w-10/12 bg-neutral-300 dark:bg-neutral-800 focus:outline-0 border-2 rounded-l-xl p-2"
             onChange={(e) => setInputValue(e.target.value)}
             value={inputValue}
           />
@@ -62,8 +57,8 @@ const Tasks = () => {
       <div className="flex flex-col gap-y-6 mx-6">
         {lists.length === 0 ? (
           <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
-            <LuFileWarning className="mx-2" size={25} />
-            empty
+            <LuFilePen className="mx-2 mb-1" size={25} />
+            Add Your Lists and Tasks
           </div>
         ) : (
           lists.map((list) => (
@@ -73,7 +68,7 @@ const Tasks = () => {
               link={`/tasks/${list.id}`}
               editedAt={
                 list.editedAt
-                  ? new Date(list.editedAt).toLocaleDateString()
+                  ? new Date(list.editedAt).toLocaleTimeString()
                   : "N/A"
               }
               listLength={list.todos.length}
