@@ -25,23 +25,6 @@ export const useTodo = create<TodoStore>()(
           ],
         })),
 
-      doneList: (listId) =>
-        set((state) => ({
-          lists: state.lists.map((list) =>
-            list.id === listId
-              ? {
-                  ...list,
-                  done: !list.done,
-                  todos: list.todos.map((todo) => ({
-                    ...todo,
-                    editedAt: new Date().toISOString(),
-                    done: !todo.done,
-                  })),
-                }
-              : list
-          ),
-        })),
-
       deleteList: (listId) =>
         set((state) => ({
           lists: state.lists.filter((item) => item.id !== listId),
@@ -53,6 +36,7 @@ export const useTodo = create<TodoStore>()(
             list.id === listId
               ? {
                   ...list,
+                  done: false,
                   todos: [
                     {
                       title,
@@ -84,6 +68,9 @@ export const useTodo = create<TodoStore>()(
                         }
                       : item
                   ),
+                  done: list.todos.every((item) =>
+                    item.id === todoId ? !item.done : item.done
+                  ),
                 }
               : list
           ),
@@ -96,6 +83,10 @@ export const useTodo = create<TodoStore>()(
               ? {
                   ...list,
                   todos: list.todos.filter((item) => item.id !== todoId),
+
+                  done: list.todos
+                    .filter((item) => item.id !== todoId)
+                    .every((item) => item.done),
                 }
               : list
           ),

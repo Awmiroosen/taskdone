@@ -7,13 +7,13 @@ import {
   LuCalendarCheck2,
   LuClock,
   LuClipboardList,
+  LuClipboardCheck,
   LuTrash,
   LuChevronRight,
 } from "react-icons/lu";
 
 import { TiStarOutline, TiStar } from "react-icons/ti";
 import Link from "next/link";
-
 
 const ListCard = ({
   id,
@@ -22,9 +22,9 @@ const ListCard = ({
   editedAt,
   listLength,
   link = "",
+  doneCount = 0,
 }: ListCardType) => {
-  const { doneList, deleteList, addPinList, deletePinList, pinLists } =
-    useTodo();
+  const { deleteList, addPinList, deletePinList, pinLists } = useTodo();
 
   const isPin = pinLists.some((item) => item.id === id);
   const handlePin = (id: string) => {
@@ -37,6 +37,9 @@ const ListCard = ({
       }
     }
   };
+
+  const btnStyle =
+    "flex justify-center mx-1 items-center px-3 py-0.5 rounded-2xl text-[0.8rem] font-light select-none";
 
   return (
     <div
@@ -73,28 +76,22 @@ const ListCard = ({
       </div>
       <div className="w-full flex my-1">
         <div className="w-1/2 flex justify-start">
-          <span className="flex justify-center items-center bg-neutral-300 dark:bg-neutral-700 px-3 py-0.5 rounded-2xl text-[0.8rem] font-light select-none">
+          <span className={`${btnStyle} bg-neutral-300 dark:bg-neutral-700`}>
             <LuClock className="mr-1 mb-0.5" />
             {editedAt}
           </span>
         </div>
         <div className="w-1/2 flex justify-end">
-          <span className="flex justify-center items-center bg-neutral-300 dark:bg-neutral-700 px-3 py-0.5 rounded-2xl text-[0.8rem] font-light select-none">
+          <span className={`${btnStyle} bg-neutral-300 dark:bg-neutral-700`}>
             <LuClipboardList className="mr-1 mb-0.5" /> {listLength}
+          </span>
+          <span className={`${btnStyle} bg-green-400/50 dark:bg-green-800/50`}>
+            <LuClipboardCheck className="mr-1 mb-0.5" /> {doneCount}
           </span>
         </div>
       </div>
       <div className="mt-2 pt-4 border-t border-neutral-300 dark:border-neutral-800 flex">
         <div className="w-1/2 flex">
-          <div className="mx-3">
-            <input
-              type="checkbox"
-              checked={done}
-              onChange={() => doneList(id)}
-              className="cursor-pointer"
-              style={{ transform: "scale(1.2)" }}
-            />
-          </div>
           <div className="mx-3">
             <button
               className="hover:text-red-600 cursor-pointer"

@@ -55,6 +55,7 @@ const Tasks = () => {
                   : "N/A"
               }
               listLength={list.todos.length}
+              doneCount={list.todos.filter((item) => item.done).length}
             />
           ))
         )}
