@@ -4,7 +4,12 @@ import ListCard from "@/components/ui/ListCard";
 
 import { useTodo } from "@/store/todoStore";
 import { useState } from "react";
-import { LuPlus, LuFileWarning, LuFolder } from "react-icons/lu";
+import {
+  LuPlus,
+  LuFileWarning,
+  LuFolder,
+  LuCalendarCheck2,
+} from "react-icons/lu";
 
 const Tasks = () => {
   const { lists, addList } = useTodo();
@@ -19,28 +24,37 @@ const Tasks = () => {
     setInputValue("");
   };
 
+  const isAllListsDone =
+    lists.map((item) => item.done).length ===
+    lists.filter((item) => item.done).length;
+
   return (
     <section className="p-2">
       <div>
         <div className="w-full flex my-8 px-1">
           <input
             type="text"
-            placeholder="type here"
-            className="w-10/12 bg-neutral-100 dark:bg-neutral-900 focus:outline-0 border-2 rounded-l-2xl p-2"
+            placeholder="Add new List"
+            className="w-10/12 bg-neutral-100 dark:bg-neutral-900 focus:outline-0 border rounded-l-xl p-2"
             onChange={(e) => setInputValue(e.target.value)}
             value={inputValue}
           />
           <button
             onClick={() => handleAdd()}
-            className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 cursor-pointer flex justify-center items-center rounded-r-2xl"
+            className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 cursor-pointer flex justify-center items-center rounded-r-xl"
           >
             <LuPlus size={25} />
           </button>
         </div>
       </div>
       <div className="w-full my-8 flex justify-center items-center select-none">
-        <div className="flex bg-neutral-900 text-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 px-4 py-1 rounded-2xl">
-          <LuFolder size={22} />
+        <div className="flex bg-neutral-800 text-neutral-100 dark:bg-neutral-200 dark:text-neutral-900 px-4 py-1 rounded-2xl">
+          {!isAllListsDone ? (
+            <LuFolder size={22} />
+          ) : (
+            <LuCalendarCheck2 size={22} />
+          )}
+          {}
           <h3 className="mx-1 text-xl font-semibold">Lists</h3>
         </div>
       </div>

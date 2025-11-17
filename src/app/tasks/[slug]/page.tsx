@@ -40,7 +40,7 @@ const ListPage = () => {
       <div className="text-sm flex justify-start items-center">
         <Link
           href="/tasks"
-          className="bg-neutral-900 text-neutral-200 dark:bg-neutral-200 dark:text-neutral-900 px-2 py-1 rounded-2xl flex items-center"
+          className="bg-neutral-900 hover:bg-neutral-700 text-neutral-200 dark:bg-neutral-200 dark:hover:bg-neutral-300 dark:text-neutral-900 transition-colors duration-150 px-2 py-1 rounded-2xl flex items-center"
         >
           <LuChevronLeft className="mb-1" />
           back
@@ -50,20 +50,20 @@ const ListPage = () => {
       <div className="w-full flex my-8 px-1">
         <input
           type="text"
-          placeholder="type here"
-          className="w-10/12 bg-neutral-100 dark:bg-neutral-900 focus:outline-0 border-2 rounded-l-2xl p-2"
+          placeholder="Add your tasks"
+          className="w-10/12 bg-neutral-100 dark:bg-neutral-900 focus:outline-0 border rounded-l-xl p-2"
           onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
         />
         <button
           onClick={() => handleAdd()}
-          className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 cursor-pointer flex justify-center items-center rounded-r-2xl"
+          className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 cursor-pointer flex justify-center items-center rounded-r-xl"
         >
           <LuPlus size={25} />
         </button>
       </div>
       <div className="w-full my-8 flex justify-center items-center select-none">
-        <div className="flex bg-neutral-900 text-neutral-100 dark:bg-neutral-100 dark:text-neutral-900 px-4 py-1 rounded-2xl">
+        <div className="flex bg-neutral-800 text-neutral-100 dark:bg-neutral-200 dark:text-neutral-900 px-4 py-1 rounded-2xl">
           {activeList.todos.filter((item) => item.done).length !==
           activeList.todos.length ? (
             <LuCalendarFold size={22} />

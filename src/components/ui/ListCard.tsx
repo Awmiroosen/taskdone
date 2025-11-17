@@ -66,7 +66,7 @@ const ListCard = ({
           )}
         </div>
         <div>
-          <button onClick={() => handlePin(id)}>
+          <button onClick={() => handlePin(id)} >
             {isPin ? <TiStar size={20} /> : <TiStarOutline size={20} />}
           </button>
         </div>
@@ -94,7 +94,7 @@ const ListCard = ({
         <div className="w-1/2 flex">
           <div className="mx-3">
             <button
-              className="hover:text-red-600 cursor-pointer"
+              className="bg-neutral-300 dark:bg-neutral-700 p-1.5 rounded-2xl hover:bg-red-600/60 transition-colors duration-100 cursor-pointer"
               onClick={() => deleteList(id)}
             >
               <LuTrash />
@@ -104,7 +104,7 @@ const ListCard = ({
         <div className="w-1/2 flex justify-end text-sm">
           <Link
             href={link}
-            className="bg-neutral-900 text-neutral-200 dark:bg-neutral-200 dark:text-neutral-900 px-3 rounded-2xl flex items-center"
+            className="bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-200 dark:hover:bg-neutral-300 dark:text-neutral-900 transition-colors duration-150 px-3 rounded-2xl flex items-center"
           >
             Tasks
             <button>
