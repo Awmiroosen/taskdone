@@ -1,47 +1,94 @@
 "use client";
 
+import ListCard from "@/components/ui/ListCard";
+import TaskCard from "@/components/ui/TaskCard";
 import { useTodo } from "@/store/todoStore";
-import Link from "next/link";
-import { LuChevronRight, LuClipboardList, LuPin } from "react-icons/lu";
-
+import { LuCalendarFold, LuFilePen, LuFolder } from "react-icons/lu";
 const Home = () => {
-  const { pinLists } = useTodo();
+  const { lists } = useTodo();
 
-  const btnStyle =
-    "flex justify-center items-center px-3 py-0.5 rounded-2xl text-[0.9rem] font-light select-none";
+  const latestLists = lists.slice(0, 2);
 
-  const PinLength = pinLists.map((pin) => pin).length;
+  const latestTasks = lists
+    .flatMap((list) => list.todos)
+    .sort(
+      (a, b) =>
+        new Date(b.editedAt ?? 0).getTime() -
+        new Date(a.editedAt ?? 0).getTime()
+    )
+    .slice(0, 6);
+
+  console.log(latestTasks);
+
   return (
     <>
       <header className="w-full h-12 my-4 flex justify-center items-center">
-        <h1 className="text-3xl font-bold">Taskdone</h1>
+        <h1 className="text-3xl font-black">Taskdone</h1>
       </header>
-      <section>
-        <div className="rounded-2xl p-4 flex flex-col bg-neutral-100 dark:bg-neutral-900 transition-opacity duration-500">
-          <div className="w-full flex justify-between my-4">
-            <h5 className="font-semibold text-xl py-1 ">Pin Lists</h5>
-            <LuPin size={20} />
-          </div>
-          <div className="w-full flex justify-end my-1">
-            <span className={`${btnStyle} bg-neutral-300 dark:bg-neutral-700`}>
-              <LuClipboardList className="mr-1 mb-0.5" /> {PinLength}
-            </span>
-          </div>
-          <div className="mt-2 pt-4 border-t border-neutral-300 dark:border-neutral-800 flex">
-            <div className="w-full flex justify-end text-sm">
-              <Link
-                href={""}
-                className="bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-200 dark:hover:bg-neutral-300 dark:text-neutral-900 transition-colors duration-150 px-3 py-1 rounded-2xl flex items-center"
-              >
-                Pin Lists
-                <button>
-                  <LuChevronRight size={15} />
-                </button>
-              </Link>
-            </div>
+
+      <section className="mb-20">
+        <div className="w-full my-8 flex justify-center items-center select-none">
+          <div className="flex bg-neutral-800 text-neutral-100 dark:bg-neutral-200 dark:text-neutral-900 px-4 py-1 rounded-2xl">
+            <LuCalendarFold size={22} />
+            <h3 className="mx-1 text-xl font-semibold">Latest Tasks</h3>
           </div>
         </div>
+
+        {latestTasks.length ? (
+          <div className="grid grid-cols-2 gap-8">
+            {latestTasks.map((task, idx) => (
+              <TaskCard key={idx} {...task} />
+            ))}
+          </div>
+        ) : (
+          <div>
+            <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
+              <LuFilePen className="mx-2 mb-1" size={25} />
+              Add Your Tasks
+            </div>
+          </div>
+        )}
       </section>
+
+      <section className="mb-32">
+        <div className="w-full my-8 flex justify-center items-center select-none">
+          <div className="flex bg-neutral-800 text-neutral-100 dark:bg-neutral-200 dark:text-neutral-900 px-4 py-1 rounded-2xl">
+            <LuFolder size={22} />
+            <h3 className="mx-1 text-xl font-semibold">Latest Lists</h3>
+          </div>
+        </div>
+
+        {latestLists.length ? (
+          <div className="flex flex-col gap-8">
+            {latestLists.map((list, idx) => (
+              <ListCard
+                key={idx}
+                {...list}
+                listLength={list.todos.length}
+                editedAt={
+                  list.editedAt
+                    ? new Date(list.editedAt).toLocaleTimeString()
+                    : "N/A"
+                }
+                link={`/tasks/${list.id}`}
+                doneCount={list.todos.filter((item) => item.done).length}
+                trash={false}
+              />
+            ))}
+          </div>
+        ) : (
+          <div>
+            <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
+              <LuFilePen className="mx-2 mb-1" size={25} />
+              Add Your Lists
+            </div>
+          </div>
+        )}
+      </section>
+
+      <footer className="w-full mb-20 text-center">
+        <h2>Made with ❤️ for everyone who stops by</h2>
+      </footer>
     </>
   );
 };

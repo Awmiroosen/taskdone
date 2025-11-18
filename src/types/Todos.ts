@@ -17,12 +17,9 @@ interface List {
 
 export interface TodoStore {
   lists: List[];
-  pinLists: List[];
   addTodo?: (listId: string, title: string) => void;
   doneTodo: (listId: string, todoId: string) => void;
   deleteTodo: (listId: string, todoId: string) => void;
   addList: (title: string) => void;
   deleteList: (listId: string) => void;
-  addPinList: (listId: string) => void;
-  deletePinList: (listId: string) => void;
 }

@@ -47,21 +47,28 @@ const ListPage = () => {
         </Link>
       </div>
 
-      <div className="w-full flex my-8 px-1">
+      <form
+        className="w-full flex my-8 px-1"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleAdd();
+        }}
+      >
         <input
           type="text"
           placeholder="Add your tasks"
-          className="w-10/12 bg-neutral-300 dark:bg-neutral-800 focus:outline-0 border-2 rounded-l-xl p-2"
+          className="w-10/12 bg-neutral-300 dark:bg-neutral-800 focus:outline-0 border-2  rounded-l-3xl p-2"
           onChange={(e) => setInputValue(e.target.value)}
           value={inputValue}
         />
         <button
           onClick={() => handleAdd()}
-          className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 cursor-pointer flex justify-center items-center rounded-r-xl"
+          className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-300 transition-colors duration-150 cursor-pointer flex justify-center items-center rounded-r-3xl"
         >
           <LuPlus size={25} />
         </button>
-      </div>
+      </form>
+
       <div className="w-full my-8 flex justify-center items-center select-none">
         <div className="flex bg-neutral-800 text-neutral-100 dark:bg-neutral-200 dark:text-neutral-900 px-4 py-1 rounded-2xl">
           {activeList.todos.filter((item) => item.done).length !==

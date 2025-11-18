@@ -6,4 +6,5 @@ export interface ListCardType {
   listLength: number;
   doneCount: number;
   link: string;
+  trash : boolean
 }

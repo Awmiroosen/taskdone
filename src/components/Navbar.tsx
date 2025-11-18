@@ -1,5 +1,5 @@
 import ThemeSwitch from "@/components/ui/ThemeSwitch";
-import { LuHouse, LuNotebookText } from "react-icons/lu";
+import { LuHouse, LuNotebookText, LuGithub } from "react-icons/lu";
 import "@/styles/navbar.css";
 import Link from "next/link";
 
@@ -18,11 +18,21 @@ const Navbar = () => {
           </Link>
           <span className={navSpanClass}>Tasks</span>
         </div>
-        <div className="navItem">
+        <div className="navItem border-r dark:border-neutral-400 border-neutral-700">
           <Link className={navLinkClass} href="/">
             <LuHouse size={23} />
           </Link>
           <span className={navSpanClass}>Home</span>
+        </div>
+        <div className="navItem">
+          <a
+            href="https://github.com/awmiroosen"
+            target="_blank"
+            className={navLinkClass}
+          >
+            <LuGithub size={23} />
+          </a>
+          <span className={navSpanClass}>Github</span>
         </div>
         <div className="navItem">
           <span className={`${navLinkClass} flex`}>

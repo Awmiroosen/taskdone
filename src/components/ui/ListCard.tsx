@@ -12,7 +12,6 @@ import {
   LuChevronRight,
 } from "react-icons/lu";
 
-import { TiStarOutline, TiStar } from "react-icons/ti";
 import Link from "next/link";
 
 const ListCard = ({
@@ -23,20 +22,9 @@ const ListCard = ({
   listLength,
   link = "",
   doneCount = 0,
+  trash = true,
 }: ListCardType) => {
-  const { deleteList, addPinList, deletePinList, pinLists } = useTodo();
-
-  const isPin = pinLists.some((item) => item.id === id);
-  const handlePin = (id: string) => {
-    const isItPin = pinLists.some((item) => item.id === id);
-    if (!done) {
-      if (!isItPin) {
-        addPinList(id);
-      } else {
-        deletePinList(id);
-      }
-    }
-  };
+  const { deleteList } = useTodo();
 
   const btnStyle =
     "flex justify-center mx-1 items-center px-3 py-0.5 rounded-2xl text-[0.8rem] font-light select-none";
@@ -65,11 +53,6 @@ const ListCard = ({
             </span>
           )}
         </div>
-        <div>
-          <button onClick={() => handlePin(id)} >
-            {isPin ? <TiStar size={20} /> : <TiStarOutline size={20} />}
-          </button>
-        </div>
       </div>
       <div className="w-full my-4">
         <h5 className="font-semibold text-xl py-1 ">{title}</h5>
@@ -92,19 +75,21 @@ const ListCard = ({
       </div>
       <div className="mt-2 pt-4 border-t border-neutral-300 dark:border-neutral-800 flex">
         <div className="w-1/2 flex">
-          <div className="mx-3">
-            <button
-              className="bg-neutral-300 dark:bg-neutral-700 p-1.5 rounded-2xl hover:bg-red-600/60 transition-colors duration-100 cursor-pointer"
-              onClick={() => deleteList(id)}
-            >
-              <LuTrash />
-            </button>
-          </div>
+          {trash && (
+            <div className="mx-3">
+              <button
+                className="bg-neutral-300 dark:bg-neutral-700 p-1.5 rounded-2xl hover:bg-red-600/60 transition-colors duration-100 cursor-pointer"
+                onClick={() => deleteList(id)}
+              >
+                <LuTrash />
+              </button>
+            </div>
+          )}
         </div>
         <div className="w-1/2 flex justify-end text-sm">
           <Link
             href={link}
-            className="bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-200 dark:hover:bg-neutral-300 dark:text-neutral-900 transition-colors duration-150 px-3 rounded-2xl flex items-center"
+            className="bg-neutral-900 hover:bg-neutral-800 text-neutral-200 dark:bg-neutral-200 dark:hover:bg-neutral-300 dark:text-neutral-900 transition-colors duration-150 px-3 py-1 rounded-2xl flex items-center"
           >
             Tasks
             <button>

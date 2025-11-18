@@ -9,7 +9,6 @@ export const useTodo = create<TodoStore>()(
   persist(
     (set) => ({
       lists: [],
-      pinLists: [],
 
       addList: (title) =>
         set((state) => ({
@@ -90,21 +89,6 @@ export const useTodo = create<TodoStore>()(
                 }
               : list
           ),
-        })),
-
-      addPinList: (listId) =>
-        set((state) => {
-          const isList = state.lists.find((list) => list.id === listId);
-          if (!isList) return {};
-          if (state.pinLists.some((list) => list.id === listId)) return {};
-          return {
-            pinLists: [...state.pinLists, isList],
-          };
-        }),
-
-      deletePinList: (listId) =>
-        set((state) => ({
-          pinLists: state.pinLists.filter((list) => list.id !== listId),
         })),
     }),
 
