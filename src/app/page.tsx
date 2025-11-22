@@ -7,7 +7,7 @@ import { LuCalendarFold, LuFilePen, LuFolder } from "react-icons/lu";
 const Home = () => {
   const { lists } = useTodo();
 
-  const latestLists = lists.slice(0, 2);
+  const latestLists = lists.slice(0, 4);
 
   const latestTasks = lists
     .flatMap((list) => list.todos)
@@ -16,9 +16,8 @@ const Home = () => {
         new Date(b.editedAt ?? 0).getTime() -
         new Date(a.editedAt ?? 0).getTime()
     )
-    .slice(0, 6);
+    .slice(0, 4);
 
-  console.log(latestTasks);
 
   return (
     <>
@@ -26,7 +25,7 @@ const Home = () => {
         <h1 className="text-3xl font-black">Taskdone</h1>
       </header>
 
-      <section className="mb-20">
+      <section className="mb-20 px-2">
         <div className="w-full my-8 flex justify-center items-center select-none">
           <div className="flex bg-neutral-800 text-neutral-100 dark:bg-neutral-200 dark:text-neutral-900 px-4 py-1 rounded-2xl">
             <LuCalendarFold size={22} />
@@ -50,7 +49,7 @@ const Home = () => {
         )}
       </section>
 
-      <section className="mb-32">
+      <section className="mb-32 px-4">
         <div className="w-full my-8 flex justify-center items-center select-none">
           <div className="flex bg-neutral-800 text-neutral-100 dark:bg-neutral-200 dark:text-neutral-900 px-4 py-1 rounded-2xl">
             <LuFolder size={22} />

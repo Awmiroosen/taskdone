@@ -4,7 +4,7 @@ import ListCard from "@/components/ui/ListCard";
 
 import { useTodo } from "@/store/todoStore";
 import { useState } from "react";
-import { LuPlus, LuFilePen, LuFolder, LuCalendarCheck2 } from "react-icons/lu";
+import { LuFilePen, LuFolder, LuCalendarCheck2 } from "react-icons/lu";
 
 const Tasks = () => {
   const { lists, addList } = useTodo();
@@ -23,6 +23,11 @@ const Tasks = () => {
     lists.map((item) => item.done).length ===
     lists.filter((item) => item.done).length;
 
+    const doneLists = lists.filter(list => list.done === true).length
+
+  const btnStyle =
+    "flex justify-center mx-1 items-center px-3 py-0.5 rounded-2xl text-[0.8rem] font-light select-none";
+
   return (
     <section className="p-2 mb-18">
       <div>
@@ -35,17 +40,11 @@ const Tasks = () => {
         >
           <input
             type="text"
-            placeholder="Add new List"
-            className="w-10/12 bg-neutral-300 dark:bg-neutral-800  focus:outline-0 border-2 rounded-l-3xl p-2"
+            placeholder="add your new List"
+            className="w-full bg-neutral-300 dark:bg-neutral-800  focus:outline-0 border-2 rounded-3xl p-2"
             onChange={(e) => setInputValue(e.target.value)}
             value={inputValue}
           />
-          <button
-            onClick={() => handleAdd()}
-            className="w-2/12 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-300 transition-colors duration-150 cursor-pointer flex justify-center items-center rounded-r-3xl"
-          >
-            <LuPlus size={25} />
-          </button>
         </form>
       </div>
 
@@ -60,7 +59,18 @@ const Tasks = () => {
           <h3 className="mx-1 text-xl font-semibold">Lists</h3>
         </div>
       </div>
-
+      <div className="w-full my-8 grid grid-cols-2 place-items-center">
+        <div>
+          <span className={`${btnStyle} bg-neutral-300 dark:bg-neutral-700`}>
+            <LuFolder className="mr-1 mb-0.5" /> total: {lists.length}
+          </span>
+        </div>
+        <div>
+          <span className={`${btnStyle} bg-neutral-300 dark:bg-neutral-700`}>
+            <LuCalendarCheck2 className="mr-1 mb-0.5" /> done: {doneLists}
+          </span>
+        </div>
+      </div>
       <div className="flex flex-col gap-y-6 mx-6">
         {lists.length === 0 ? (
           <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
