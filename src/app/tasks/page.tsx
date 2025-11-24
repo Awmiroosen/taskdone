@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/ui/button";
 import ListCard from "@/components/ui/ListCard";
 
 import { useTodo } from "@/store/todoStore";
@@ -23,10 +24,7 @@ const Tasks = () => {
     lists.map((item) => item.done).length ===
     lists.filter((item) => item.done).length;
 
-    const doneLists = lists.filter(list => list.done === true).length
-
-  const btnStyle =
-    "flex justify-center mx-1 items-center px-3 py-0.5 rounded-2xl text-[0.8rem] font-light select-none";
+  const doneLists = lists.filter((list) => list.done === true).length;
 
   return (
     <section className="p-2 mb-18">
@@ -60,16 +58,13 @@ const Tasks = () => {
         </div>
       </div>
       <div className="w-full my-8 grid grid-cols-2 place-items-center">
-        <div>
-          <span className={`${btnStyle} bg-neutral-300 dark:bg-neutral-700`}>
-            <LuFolder className="mr-1 mb-0.5" /> total: {lists.length}
-          </span>
-        </div>
-        <div>
-          <span className={`${btnStyle} bg-neutral-300 dark:bg-neutral-700`}>
-            <LuCalendarCheck2 className="mr-1 mb-0.5" /> done: {doneLists}
-          </span>
-        </div>
+        <Button>
+          <LuFolder className="mr-1 mb-0.5" /> total: {lists.length}
+        </Button>
+
+        <Button>
+          <LuCalendarCheck2 className="mr-1 mb-0.5" /> done: {doneLists}
+        </Button>
       </div>
       <div className="flex flex-col gap-y-6 mx-6">
         {lists.length === 0 ? (
