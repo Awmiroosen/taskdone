@@ -39,7 +39,7 @@ const Tasks = () => {
           <input
             type="text"
             placeholder="add your new List"
-            className="w-full bg-neutral-300 dark:bg-neutral-800  focus:outline-0 border-2 rounded-3xl p-2"
+            className="w-full bg-neutral-300 dark:bg-neutral-800 focus:outline-0 border rounded-xl p-2"
             onChange={(e) => setInputValue(e.target.value)}
             value={inputValue}
           />

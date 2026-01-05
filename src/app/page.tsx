@@ -3,6 +3,7 @@
 import ListCard from "@/components/ui/ListCard";
 import TaskCard from "@/components/ui/TaskCard";
 import { useTodo } from "@/store/todoStore";
+import Link from "next/link";
 import { LuCalendarFold, LuFilePen, LuFolder } from "react-icons/lu";
 const Home = () => {
   const { lists } = useTodo();
@@ -17,7 +18,6 @@ const Home = () => {
         new Date(a.editedAt ?? 0).getTime()
     )
     .slice(0, 4);
-
 
   return (
     <>
@@ -41,10 +41,12 @@ const Home = () => {
           </div>
         ) : (
           <div>
-            <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
-              <LuFilePen className="mx-2 mb-1" size={25} />
-              Add Your Tasks
-            </div>
+            <Link href="/tasks">
+              <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
+                <LuFilePen className="mx-2 mb-1" size={25} />
+                Add Your Tasks
+              </div>
+            </Link>
           </div>
         )}
       </section>
@@ -77,10 +79,12 @@ const Home = () => {
           </div>
         ) : (
           <div>
-            <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
-              <LuFilePen className="mx-2 mb-1" size={25} />
-              Add Your Lists
-            </div>
+            <Link href="/tasks">
+              <div className="w-full h-52 flex justify-center items-center text-xl text-neutral-400">
+                <LuFilePen className="mx-2 mb-1" size={25} />
+                Add Your Lists
+              </div>
+            </Link>
           </div>
         )}
       </section>

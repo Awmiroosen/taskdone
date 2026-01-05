@@ -19,7 +19,7 @@ const RootLayout = ({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${vazir.className} bg-neutral-300 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200`}
+        className={`${vazir.className} bg-neutral-300 text-neutral-800 dark:bg-neutral-900/30 dark:text-neutral-200`}
       >
         <ThemeProvider attribute="class" enableSystem>
           <main className="max-w-sm overflow-hidden mx-auto">{children}</main>
